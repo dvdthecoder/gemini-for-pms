@@ -1,0 +1,84 @@
+stages:
+  - test
+  - deploy
+
+variables:
+  GIT_DEPTH: 1
+
+course-integrity:
+  stage: test
+  image: bash:5
+  script:
+    - chmod +x tests/check-course-integrity.sh
+    - bash tests/check-course-integrity.sh
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+check-committed-outputs:
+  stage: test
+  image: bash:5
+  script:
+    - |
+      OUTPUT_FILES=$(find outputs/ -type f ! -name '.gitkeep' 2>/dev/null | wc -l)
+      if [ "$OUTPUT_FILES" -gt 0 ]; then
+        echo "Student output files found in outputs/ - should not be committed"
+        find outputs/ -type f ! -name '.gitkeep'
+        exit 1
+      fi
+      echo "outputs/ is clean."
+    - |
+      if [ -f "my-gemini.md" ]; then
+        echo "my-gemini.md should not be committed (personal project memory)"
+        exit 1
+      fi
+      echo "No personal GEMINI files found."
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+pages:
+  stage: deploy
+  image: python:3.12-slim
+  script:
+    - pip install -r requirements-docs.txt --quiet
+    - mkdocs build --strict
+    - mv site public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - docs/**/*
+        - mkdocs.yml
+        - requirements-docs.txt
+
+release:
+  stage: deploy
+  image: bash:5
+  script:
+    - bash tests/check-course-integrity.sh
+    - bash scripts/build-zip.sh
+  artifacts:
+    name: gemini-for-pms
+    paths:
+      - gemini-for-pms.zip
+    expire_in: never
+  release:
+    name: '$CI_COMMIT_TAG'
+    description: |
+      ## Gemini CLI for PMs — $CI_COMMIT_TAG
+
+      Download the course zip and follow the setup instructions at the course website.
+
+      **Mac/Linux:** `bash setup.sh`
+      **Windows:** double-click `setup.bat`
+    tag_name: '$CI_COMMIT_TAG'
+    assets:
+      links:
+        - name: gemini-for-pms.zip
+          url: '$CI_PROJECT_URL/-/jobs/artifacts/$CI_COMMIT_TAG/raw/gemini-for-pms.zip?job=release'
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v/'

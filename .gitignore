@@ -1,0 +1,44 @@
+# Student outputs — exclude personal work from repo
+outputs/*
+!outputs/.gitkeep
+
+# Student personal files
+my-gemini.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node (if a site layer is added later)
+node_modules/
+.env
+.env.local
+
+# Python (if tooling is added)
+__pycache__/
+*.pyc
+.venv/
+
+# Distribution zip (built by scripts/build-zip.sh)
+*.zip
+
+# MkDocs build output
+site/
+
+# Logs
+*.log

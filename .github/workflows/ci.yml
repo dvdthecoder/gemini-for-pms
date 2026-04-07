@@ -1,0 +1,42 @@
+name: Course Integrity
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  integrity:
+    name: Check course integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make test script executable
+        run: chmod +x tests/check-course-integrity.sh
+
+      - name: Run course integrity tests
+        run: bash tests/check-course-integrity.sh
+
+      - name: Check no student outputs committed
+        run: |
+          # outputs/ should only contain .gitkeep
+          OUTPUT_FILES=$(find outputs/ -type f ! -name '.gitkeep' 2>/dev/null | wc -l)
+          if [ "$OUTPUT_FILES" -gt 0 ]; then
+            echo "Error: Student output files found in outputs/ directory."
+            echo "These should not be committed. Check your .gitignore."
+            find outputs/ -type f ! -name '.gitkeep'
+            exit 1
+          fi
+          echo "outputs/ is clean."
+
+      - name: Check no personal GEMINI files committed
+        run: |
+          if [ -f "my-gemini.md" ]; then
+            echo "Error: my-gemini.md (personal project memory) should not be committed."
+            exit 1
+          fi
+          echo "No personal GEMINI files found."

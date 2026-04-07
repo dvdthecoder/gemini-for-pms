@@ -1,0 +1,34 @@
+description = "Show your course progress and next lesson"
+prompt = """
+Read `my-progress.md` and display a formatted progress overview.
+
+Show it in this format:
+
+---
+
+## Gemini CLI for PMs — Your Progress
+
+[For each module, show the module name and list each lesson with a checkmark (✓) if complete or an arrow (→) if it's the next lesson, or a dash (–) if not yet reached]
+
+Example format:
+**Module 0: Getting Started**
+  ✓ 0.0 Introduction
+  ✓ 0.1 Installation
+  → 0.2 First Run  ← YOU ARE HERE
+
+**Module 1: Fundamentals**
+  – 1.1 Welcome to Stride
+  [etc.]
+
+---
+
+After the map, show:
+
+**Your next step:** [lesson name and slash command]
+**Outputs you've created:** [list from my-progress.md, or "None yet" if empty]
+
+Then ask: "Ready to continue? I'll start [next lesson] when you are. Or type the slash command directly."
+
+If my-progress.md shows the course is complete, congratulate them and suggest 3 ways to apply what they've learned to their real work.
+
+"""

@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run course integrity tests
+        run: bash tests/check-course-integrity.sh
+
+      - name: Build course zip
+        run: bash scripts/build-zip.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body: |
+            ## Gemini CLI for PMs — ${{ github.ref_name }}
+
+            Download the course zip and follow the setup instructions at the course website.
+
+            **Mac/Linux:** `bash setup.sh`
+            **Windows:** double-click `setup.bat`
+          files: gemini-for-pms.zip
+          fail_on_unmatched_files: true

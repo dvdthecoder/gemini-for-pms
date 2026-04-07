@@ -1,0 +1,96 @@
+site_name: Gemini CLI for PMs
+site_description: A free, hands-on course for product managers. Learn to use Gemini CLI to do your best work — no coding experience required.
+site_url: https://dvdthecoder.github.io/gemini-for-pms
+repo_url: https://github.com/dvdthecoder/gemini-for-pms
+repo_name: dvdthecoder/gemini-for-pms
+edit_uri: ""
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/google
+      link: https://gemini.google.com
+      name: Gemini by Google
+  version:
+    provider: mike
+
+# Announce banner pointing to download
+# Uncomment and update once repo is live:
+# extra_css:
+#   - assets/extra.css
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - What is Gemini CLI?: getting-started/introduction.md
+    - Installation: getting-started/installation.md
+    - First Run: getting-started/first-run.md
+  - Module 1 — Fundamentals:
+    - Overview: module-1/index.md
+    - 1.1 Welcome to Stride: module-1/welcome.md
+    - 1.2 The 1M Context Window: module-1/context-window.md
+    - 1.3 Your First PM Tasks: module-1/first-tasks.md
+    - 1.4 Working with Files: module-1/file-references.md
+    - 1.5 Google Search Grounding: module-1/search-grounding.md
+    - 1.6 Project Memory: module-1/project-memory.md
+    - 1.7 Navigation Tips: module-1/navigation.md
+  - Module 2 — Advanced PM Work:
+    - Overview: module-2/index.md
+    - 2.1 Write a PRD: module-2/write-prd.md
+    - 2.2 Analyze Data: module-2/analyze-data.md
+    - 2.3 Competitive Strategy: module-2/competitive-strategy.md
+  - Module 3 — Vibe Coding:
+    - Overview: module-3/index.md
+    - 3.1 Build a PM Tool: module-3/vibe-coding.md
+    - 3.2 Plan Your Tool: module-3/plan-your-tool.md
+    - 3.3 Share & Deploy: module-3/share-and-deploy.md
+  - Download: download.md
