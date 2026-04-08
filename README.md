@@ -8,8 +8,7 @@ No coding experience required. No paid subscription needed.
 
 ## Course Website
 
-- **GitHub Pages:** https://dvdthecoder.github.io/gemini-for-pms
-- **GitLab Pages (Cimpress):** https://cimpress-technology.gitlab.io/sa/gemini-for-pms
+https://dvdthecoder.github.io/gemini-for-pms
 
 ---
 
@@ -19,10 +18,7 @@ You don't need GitHub, git, or any coding experience.
 
 **1. Download the course folder**
 
-| Source | Link |
-|--------|------|
-| GitHub | [Download from GitHub](https://github.com/dvdthecoder/gemini-for-pms/releases/latest/download/gemini-for-pms.zip) |
-| GitLab (Cimpress) | [Download from GitLab](https://gitlab.com/Cimpress-Technology/sa/gemini-for-pms/-/releases/permalink/latest/downloads/gemini-for-pms.zip) |
+[Download from GitHub](https://github.com/dvdthecoder/gemini-for-pms/releases/latest/download/gemini-for-pms.zip)
 
 Unzip the downloaded file. You'll get a folder called `gemini-for-pms`.
 
@@ -136,7 +132,7 @@ bash setup.sh
 | `scripts/build-zip.sh` | Builds the distributable zip for releases |
 | `tests/` | Course integrity tests |
 | `.github/workflows/` | CI, docs deployment, release automation |
-| `.gitlab-ci.yml` | GitLab CI for Cimpress-hosted mirror |
+| `.gitlab-ci.yml` | GitLab CI configuration |
 
 ### Running tests locally
 
@@ -174,7 +170,7 @@ This repo is designed to be forkable. The fictional company (Stride), the exerci
 
 ### Forking checklist
 
-- [ ] Fork the repo on GitHub (or GitLab)
+- [ ] Fork the repo on GitHub
 - [ ] Update `mkdocs.yml`: `site_name`, `site_url`, `repo_url`, `repo_name`
 - [ ] Replace `company-context/` files
 - [ ] Rewrite `GEMINI.md` with your project context

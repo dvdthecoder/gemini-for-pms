@@ -9,11 +9,6 @@ No GitHub account needed. No git. Just download and unzip.
 ## Download
 
 [Download from GitHub](https://github.com/dvdthecoder/gemini-for-pms/releases/latest/download/gemini-for-pms.zip){ .md-button .md-button--primary }
-[Download from GitLab](https://gitlab.com/Cimpress-Technology/sa/gemini-for-pms/-/releases/permalink/latest/downloads/gemini-for-pms.zip){ .md-button }
-
-!!! tip "Which one should I use?"
-    **Cimpress employees:** use the GitLab link — it's hosted on your company's GitLab instance.
-    **Everyone else:** use the GitHub link.
 
 !!! tip "Always up to date"
     Both links always download the latest version. If the course gets updated, re-download and re-run setup — your progress in `my-progress.md` is preserved.
