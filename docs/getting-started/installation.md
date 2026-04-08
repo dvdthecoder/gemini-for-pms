@@ -1,133 +1,72 @@
-# Module 0.1 — Installation Guide
+# Module 0.1 — Installation
 
-Get Gemini CLI installed and running in under 10 minutes.
+## The Fastest Way: Use the Setup Script
+
+Download the course zip and run the setup script for your OS. It handles everything — Node.js check, Gemini CLI install, Google sign-in, and course verification.
+
+**[Go to the Download page](https://dvdthecoder.github.io/gemini-for-pms/download/)**
+
+Once setup completes, come back here and continue to [Module 0.2 — First Run](first-run.md).
+
+---
+
+## What the Setup Script Does
+
+In case you're curious — or something goes wrong — here's what happens under the hood:
+
+| Step | What it does | Why |
+|------|-------------|-----|
+| Node.js check | Verifies Node.js is installed | Gemini CLI is distributed via npm |
+| `npm install -g @google/gemini-cli` | Installs Gemini CLI globally | So you can run `gemini` from any folder |
+| `mkdir -p ~/.gemini` | Creates Gemini's config directory | Required for Gemini CLI to store settings |
+| Google sign-in | Opens browser for OAuth | Authenticates your free Gemini API access |
+| Course verification | Runs `tests/check-course-integrity.sh` | Confirms all lesson files are present |
 
 ---
 
 ## Prerequisites
 
-- A Google account (personal or Workspace/enterprise)
+- A Google account (personal or Google Workspace/enterprise)
 - Mac, Windows, or Linux
 - Internet connection
 
-That's it. No coding experience needed.
+No coding or terminal experience needed.
 
 ---
 
-## Option A: Install with npm (Recommended if you have Node.js)
+## Opening Terminal (First Time)
 
-If you've ever installed anything from npm before:
+**Mac:** Press `Cmd + Space`, type "Terminal", press Enter.
 
-```bash
-npm install -g @google/gemini-cli
-```
+**Windows:** The setup script opens PowerShell automatically when you double-click `setup.bat`.
 
-To check if Node.js is installed, open Terminal (Mac/Linux) or Command Prompt (Windows) and type:
-```bash
-node --version
-```
-If you see a version number, you have Node.js. If not, use Option B.
-
----
-
-## Option B: Download the Installer
-
-Go to the [Gemini CLI releases page](https://github.com/google-labs/gemini-cli/releases) and download the installer for your operating system.
-
-**Mac:** Download the `.dmg` file, open it, drag to Applications.
-**Windows:** Download the `.exe` installer and run it.
-**Linux:** Download the `.deb` or `.rpm` package for your distribution.
-
----
-
-## Opening Terminal (If You've Never Done This)
-
-**Mac:**
-1. Press `Cmd + Space` to open Spotlight Search
-2. Type "Terminal"
-3. Press Enter
-
-**Windows:**
-1. Press `Windows + R`
-2. Type "cmd" and press Enter
-
-**Linux:** You already know how to do this.
-
----
-
-## Authenticating with Your Google Account
-
-First, create the Gemini CLI config directory if it doesn't exist:
-
-```bash
-mkdir -p ~/.gemini
-```
-
-Then authenticate:
-
-```bash
-gemini auth login
-```
-
-This opens a browser window. Sign in with your Google account (the same one you use for Gmail or Google Workspace).
-
-**Enterprise/Workspace users:** Sign in with your work Google account. Your organization's enterprise agreement with Google covers your use of Gemini CLI.
-
-After signing in, return to the terminal — you'll see a confirmation message.
-
----
-
-## Downloading the Course Materials
-
-```bash
-git clone https://github.com/your-org/gemini-for-pms
-cd gemini-for-pms
-```
-
-If you don't have git, you can download the course as a zip file from the repository and unzip it anywhere on your computer.
-
----
-
-## Starting Gemini CLI
-
-Navigate to the course folder and run:
-
-```bash
-gemini
-```
-
-You'll see the Gemini CLI interface — a prompt where you can type.
-
----
-
-## Your First Command
-
-Type this and press Enter:
-
-```
-/start-1-1
-```
-
-The course begins. You're ready.
+**Linux:** You've got this.
 
 ---
 
 ## Troubleshooting
 
-**"Command not found: gemini"**
-The CLI didn't install to your PATH. Try closing and reopening terminal, or restart your computer.
+**"Command not found: gemini" after setup**
+Close the terminal completely, reopen it, and try `gemini` again. If still not found, run `npm install -g @google/gemini-cli` manually.
 
-**"Permission denied"**
-On Mac/Linux, try: `sudo npm install -g @google/gemini-cli`
+**"Permission denied" on Mac/Linux**
+Run `sudo bash setup.sh` instead.
 
-**Login isn't working**
-Make sure you're using a personal Google account or a Google Workspace account. The browser should open automatically — if it doesn't, copy the URL from the terminal and paste it into your browser.
+**Google sign-in not opening**
+Copy the URL printed in the terminal and paste it into your browser manually.
 
-**Still stuck?**
-Ask Gemini: once it's running, type your problem in plain English. It can help debug its own setup issues.
+**Windows script blocked**
+Right-click `setup.bat` → Properties → tick **Unblock** → OK → double-click again.
+
+**Something else**
+Once Gemini CLI is running, describe your problem in plain English — it can help diagnose its own setup issues.
 
 ---
 
 ## What's Next
 
-Once you're inside Gemini CLI with the course folder open, type `/start-1-1` to begin Module 1.
+Once setup is done, open a terminal, navigate to the course folder, run `gemini`, and type:
+
+```
+/start-0-2
+```
