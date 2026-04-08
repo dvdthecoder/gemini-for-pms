@@ -2,7 +2,7 @@
 
 ## You're In
 
-If you're reading this after running `gemini` from the course folder — you're already doing it. This lesson just orients you to what you're looking at.
+If the setup script completed successfully, Gemini CLI is installed and you're authenticated. This page orients you to the interface before you start the interactive lesson.
 
 ## The Interface
 
@@ -15,6 +15,7 @@ There are no menus. No sidebars. No settings to configure before you start.
 Type `/` followed by a command name to run a course lesson:
 
 ```
+/start-0-2     ← begins the first interactive lesson (start here)
 /start-1-1     ← begins Module 1, Lesson 1
 /course-map    ← shows your progress and what's next
 ```
@@ -43,10 +44,12 @@ To check where you are at the start of any session:
 
 ## Quitting and Returning
 
-Type `/quit` or press `Ctrl+C` to exit. Your files are saved. Your conversation history is not — but `my-progress.md` is, so you never truly lose your place.
+Type `/quit` or press `Ctrl+C` to exit. Your files are always saved. Your conversation history is not — but `my-progress.md` is, so you never lose your place.
 
-## What's Next
+## Start the Interactive Lesson
 
-Type `/start-0-2` in Gemini CLI to do the interactive version of this lesson and confirm your setup is working correctly.
+Open Gemini CLI from inside the course folder and type:
 
-Or if you're confident everything is installed and working, skip ahead to `/start-1-1` to begin the course proper.
+```
+/start-0-2
+```
