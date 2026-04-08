@@ -6,15 +6,50 @@ No coding experience required. No paid subscription needed.
 
 ---
 
-## Why Gemini CLI?
+## Course Website
 
-| | Gemini CLI | Other AI tools |
-|---|---|---|
-| Cost | **Free** with Google account | $20–$200/month |
-| Context window | **1M tokens** (your entire doc library) | 8K–200K tokens |
-| Web search | **Built-in, real-time** | Add-on or absent |
-| Enterprise | **Works with Google Workspace** | Separate approval needed |
-| Terminal | Yes | No |
+- **GitHub Pages:** https://dvdthecoder.github.io/gemini-for-pms
+- **GitLab Pages (Cimpress):** https://cimpress-technology.gitlab.io/sa/gemini-for-pms
+
+---
+
+## Taking the Course
+
+You don't need GitHub, git, or any coding experience.
+
+**1. Download the course folder**
+
+| Source | Link |
+|--------|------|
+| GitHub | [Download from GitHub](https://github.com/dvdthecoder/gemini-for-pms/releases/latest/download/gemini-for-pms.zip) |
+| GitLab (Cimpress) | [Download from GitLab](https://gitlab.com/Cimpress-Technology/sa/gemini-for-pms/-/releases/permalink/latest/downloads/gemini-for-pms.zip) |
+
+Unzip the downloaded file. You'll get a folder called `gemini-for-pms`.
+
+**2. Run the setup script**
+
+| OS | What to do |
+|----|-----------|
+| **Mac** | Open Terminal → type `bash ` → drag `setup.sh` into Terminal → press Enter |
+| **Windows** | Double-click `setup.bat` |
+| **Linux** | `bash setup.sh` |
+
+The script installs Gemini CLI, signs you in with Google, and verifies the course files are intact.
+
+**3. Start the course**
+
+```bash
+cd gemini-for-pms   # or wherever you unzipped it
+gemini              # opens Gemini CLI
+```
+
+Inside Gemini CLI, type:
+
+```
+/start-0-2
+```
+
+The first interactive lesson begins. See the [full course website](https://dvdthecoder.github.io/gemini-for-pms) for the lesson list.
 
 ---
 
@@ -27,58 +62,6 @@ By the end of this course you'll be able to:
 - Analyze product data and surface actionable insights
 - Run competitive research using live web data
 - Build simple internal PM tools without writing a line of code
-
----
-
-## Prerequisites
-
-- A Google account (free) or Google Workspace account
-- A Mac, Windows, or Linux computer
-- No terminal or coding experience required
-- ~8–10 hours total (self-paced)
-
----
-
-## Course Website
-
-- **GitHub Pages:** https://dvdthecoder.github.io/gemini-for-pms
-- **GitLab Pages (Cimpress):** https://cimpress-technology.gitlab.io/sa/gemini-for-pms
-
-## Setup
-
-### No git? Download the zip (recommended for most PMs)
-
-1. Download **gemini-for-pms.zip** from wherever your team shared it
-2. Unzip it — you'll get a folder called `gemini-for-pms`
-3. Run the setup script for your OS:
-
-| OS | What to do |
-|----|-----------|
-| **Mac** | Open Terminal → type `bash ` → drag `setup.sh` into Terminal → press Enter |
-| **Windows** | Double-click `setup.bat` |
-| **Linux** | Open Terminal → `bash setup.sh` |
-
-The script installs Gemini CLI, signs you in with Google, and launches the course.
-
-### Using git
-
-```bash
-git clone https://github.com/dvdthecoder/gemini-for-pms
-cd gemini-for-pms
-bash setup.sh
-```
-
-### Manual setup
-
-```bash
-npm install -g @google/gemini-cli
-mkdir -p ~/.gemini
-gemini auth login
-cd gemini-for-pms
-gemini
-```
-
-Once inside Gemini CLI, type `/start-0-2` to begin.
 
 ---
 
@@ -118,28 +101,85 @@ Once inside Gemini CLI, type `/start-0-2` to begin.
 
 ---
 
-## Navigating the Course
+## Contributing
 
-The entire course runs inside Gemini CLI. Once you've run `gemini` from this folder:
+Found a bug in a lesson? Want to improve an exercise or add a new one?
 
-| You want to... | Type this |
-|----------------|-----------|
-| See your progress and what's next | `/course-map` |
-| Start from the beginning | `/start-0-2` |
-| Jump to a specific lesson | `/start-1-3` (or any lesson number) |
-| Check where you left off | `@my-progress.md Where did I leave off?` |
-| Get help | `/help` |
+### Setup for contributors
 
-Your progress is saved automatically at the end of each lesson in `my-progress.md`.
+You'll need git, Node.js, and a GitHub account.
+
+```bash
+git clone https://github.com/dvdthecoder/gemini-for-pms
+cd gemini-for-pms
+bash setup.sh
+```
+
+### Workflow
+
+1. Open an issue describing the problem or improvement
+2. Create a branch: `git checkout -b fix/your-description`
+3. Make your changes
+4. Run the integrity tests: `bash tests/check-course-integrity.sh`
+5. Push and open a pull request against `main`
+
+### What's in the repo
+
+| Path | What it is |
+|------|-----------|
+| `modules/` | Course lesson content (`.md` files) |
+| `.gemini/commands/` | Slash command definitions (`.toml` files) |
+| `GEMINI.md` | Auto-loaded project memory for Gemini CLI |
+| `company-context/` | Fictional company data used in exercises |
+| `docs/` | MkDocs website source |
+| `setup.sh` / `setup.bat` | Student-facing setup scripts |
+| `scripts/build-zip.sh` | Builds the distributable zip for releases |
+| `tests/` | Course integrity tests |
+| `.github/workflows/` | CI, docs deployment, release automation |
+| `.gitlab-ci.yml` | GitLab CI for Cimpress-hosted mirror |
+
+### Running tests locally
+
+```bash
+bash tests/check-course-integrity.sh
+```
+
+The test suite runs automatically on every pull request via GitHub Actions.
 
 ---
 
-## The Company: Stride
+## Building Your Own Version
 
-Throughout this course, you're a Senior PM at **Stride** — a product management platform for distributed teams. You've just joined and inherited a serious problem: activation is broken, users are churning, and nobody agrees on what to build next.
+This repo is designed to be forkable. The fictional company (Stride), the exercises, and the company context files can all be swapped out for your own.
 
-Gemini CLI is your weapon.
+### What to customize
 
----
+| File / Folder | What to change |
+|---------------|---------------|
+| `company-context/` | Replace Stride data with your company or scenario |
+| `modules/` | Rewrite lessons for your audience and use cases |
+| `.gemini/commands/*.toml` | Update slash command prompts to match new content |
+| `GEMINI.md` | Update company context and course map |
+| `my-progress.md` | Update lesson list to match your modules |
+| `mkdocs.yml` | Change `site_name`, `site_url`, `repo_url` |
+| `docs/` | Rewrite the website content |
 
-Made for internal use. Share freely within your team.
+### What to keep
+
+- The slash command TOML format in `.gemini/commands/` — this is how Gemini CLI loads custom commands
+- The `GEMINI.md` auto-load pattern — this is how session context is preserved
+- The `my-progress.md` progress tracking pattern
+- The `setup.sh` / `setup.bat` / `setup.ps1` scripts (update the course folder name)
+- The `scripts/build-zip.sh` and GitHub Actions release workflow
+
+### Forking checklist
+
+- [ ] Fork the repo on GitHub (or GitLab)
+- [ ] Update `mkdocs.yml`: `site_name`, `site_url`, `repo_url`, `repo_name`
+- [ ] Replace `company-context/` files
+- [ ] Rewrite `GEMINI.md` with your project context
+- [ ] Update lesson `.md` files in `modules/`
+- [ ] Update `.gemini/commands/*.toml` prompts
+- [ ] Update `my-progress.md` lesson list
+- [ ] Run `bash tests/check-course-integrity.sh` to verify
+- [ ] Push a tag to trigger the release workflow: `git tag v1.0.0 && git push --tags`
